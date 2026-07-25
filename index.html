@@ -895,7 +895,7 @@
             <button onclick="closeSearchQueryModal()" class="w-9 h-9 flex items-center justify-center bg-white/5 rounded-full text-white font-bold text-sm">✕</button>
         </div>
         <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Lasă gol pentru a folosi numele produsului</p>
-        <input type="text" id="sq-modal-input" placeholder="ex: Morcovi bine facuti 1kg Esselunga" class="search-pill w-full mb-4">
+<input type="text" id="sq-modal-input" placeholder="ex: Morcovi bine facuti 1kg Metro" class="search-pill w-full mb-4">
         <button onclick="saveSearchQueryFromModal()" class="w-full py-4 bg-purple-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-2xl shadow-purple-500/40">
             Salvează
         </button>
@@ -2006,8 +2006,9 @@ function stripEmojisAndTrim(text) {
 function buildEsselungaUrl(numeProdus) {
     const curat = stripEmojisAndTrim(numeProdus);
     const encoded = encodeURIComponent(curat);
-    return `https://spesaonline.esselunga.it/commerce/nav/supermercato/store/ricerca/${encoded}`;
+    return `https://metro.zakaz.md/ro/search/?q=${encoded}`;
 }
+
 
 function openAuchan(numeProdus) {
     window.open(buildEsselungaUrl(numeProdus), '_blank');
@@ -2420,7 +2421,7 @@ function renderFridge() {
                     </div>
                     <div class="flex items-center gap-2 mt-0.5">
 
-                        <p class="text-[9px] text-gray-500 font-black uppercase tracking-widest">${prod.pretEur.toFixed(2)} EUR/${prod.unit}</p>
+<p class="text-[9px] text-gray-500 font-black uppercase tracking-widest">${prod.pretEur.toFixed(2)} LEI/${prod.unit}</p>
                         <span class="${dateCls}">${datePrefix}${dateLabel}</span>
                     </div>
                 </div>
@@ -2636,7 +2637,7 @@ ${(su => su.val)(smartUnit(ing.available, ing.unit))} ${(su => su.unit)(smartUni
                             <p class="text-sm font-black text-emerald-400 leading-tight">${res.orePer1}h</p>
                         </div>
                         <div class="flex-1 bg-white/5 rounded-xl p-2 text-center border border-white/5">
-                            <p class="text-[7px] font-black text-gray-500 uppercase tracking-widest">EUR/oră</p>
+<p class="text-[7px] font-black text-gray-500 uppercase tracking-widest">LEI/oră</p>
                             <p class="text-sm font-black text-purple-400 leading-tight">${res.EURPerOra === Infinity ? '∞' : res.EURPerOra.toFixed(2)}</p>
                         </div>
                         <div class="flex-1 bg-white/5 rounded-xl p-2 text-center border border-white/5">
@@ -2720,7 +2721,7 @@ ${(su => su.val)(smartUnit(ing.available, ing.unit))} ${(su => su.unit)(smartUni
                             <p class="text-sm font-black text-red-400/80 leading-tight">${res.orePer1}h</p>
                         </div>
                         <div class="flex-1 bg-white/5 rounded-xl p-2 text-center border border-white/5">
-                            <p class="text-[7px] font-black text-gray-500 uppercase tracking-widest">EUR lipsă/oră</p>
+<p class="text-[7px] font-black text-gray-500 uppercase tracking-widest">LEI lipsă/oră</p>
                             <p class="text-sm font-black text-red-400 leading-tight">${res.EURLipsaPerOra === Infinity ? '∞' : res.EURLipsaPerOra.toFixed(2)}</p>
                         </div>
                         <div class="flex-1 bg-white/5 rounded-xl p-2 text-center border border-white/5">
@@ -3253,7 +3254,7 @@ function renderSavedMenusList() {
                         <p class="saved-menu-stat-val">${stats.zileAutonomie.toFixed(1)}</p>
                     </div>
                     <div class="saved-menu-stat">
-                        <p class="saved-menu-stat-label">EUR/zi</p>
+<p class="saved-menu-stat-label">LEI/zi</p>
                         <p class="saved-menu-stat-val">${stats.costPeZi.toFixed(2)}</p>
                     </div>
                     <div class="saved-menu-stat">
@@ -3685,8 +3686,9 @@ function render() {
 
     const pretPeZiHud = tOre > 0 ? (tEURHud / tOre) * (orePerZi * nrPers) : 0;
 
-    document.getElementById('hud-EUR').innerText = tEURHud.toFixed(2) + ' EUR';
-    document.getElementById('hud-per-day').innerText = pretPeZiHud.toFixed(2) + ' EUR/zi';
+document.getElementById('hud-EUR').innerText = tEURHud.toFixed(2) + ' LEI';
+document.getElementById('hud-per-day').innerText = pretPeZiHud.toFixed(2) + ' LEI/zi';
+
 
 
 
@@ -3797,7 +3799,7 @@ function renderRecurente() {
                                    onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur()}"
                                    onblur="updateRecurentField(${rIdx}, 'pretEur', parseFloat(this.value) || 0)"
                                    style="width: ${String(item.pretEur).length + 2}ch;">
-                            <span class="text-[9px] font-bold text-gray-600 uppercase">EUR / buc</span>
+                            <span class="text-[9px] font-bold text-gray-600 uppercase">LEI / buc</span>
                         </div>
                         <div class="flex items-center gap-1.5 mt-1">
                             <span class="text-[10px] flex-shrink-0">🔍</span>
@@ -4005,7 +4007,7 @@ function renderCatalog() {
                                onblur="updateCatalogFieldAndScroll('${prod.id}', ${cIdx}, 'pretEur', parseFloat(this.value) || 0)"
                                style="width: ${String(prod.pretEur).length + 2}ch; -moz-appearance:textfield; -webkit-appearance:none;">
                         <div class="flex items-center gap-1">
-                            <span class="text-[8px] font-bold text-gray-600">EUR /</span>
+                            <span class="text-[8px] font-bold text-gray-600">LEI /</span>
                             <input class="text-[8px] font-black text-gray-500 uppercase bg-transparent outline-none border-none"
                                    value="${prod.unit}"
                                    onchange="updateCatalogField(${cIdx}, 'unit', this.value)"
@@ -4058,7 +4060,7 @@ function renderCatalog() {
                                value="${prod.pretEur}" readonly tabindex="-1"
                                style="width: ${String(prod.pretEur).length + 2}ch; -moz-appearance:textfield; -webkit-appearance:none;">
                         <div class="flex items-center gap-1">
-                            <span class="text-[8px] font-bold text-gray-600">EUR /</span>
+                            <span class="text-[8px] font-bold text-gray-600">LEI /</span>
                             <input class="text-[8px] font-black text-gray-500 uppercase bg-transparent outline-none border-none pointer-events-none"
                                    value="${prod.unit}" readonly
                                    style="width: ${prod.unit.length + 1}ch;">
@@ -4381,7 +4383,7 @@ function generateMenuPDF() {
     <div style="flex:1;background:rgba(192,132,252,0.08);border:1px solid rgba(192,132,252,0.2);border-radius:14px;padding:12px;text-align:center;">
         <p style="font-size:6px;font-weight:900;color:#6b7280;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;">Total</p>
         <p style="font-size:20px;font-weight:900;color:#fff;line-height:1;">${totalEUR.toFixed(2)}</p>
-        <p style="font-size:8px;font-weight:900;color:#c084fc;margin-top:2px;">${pretPeZi.toFixed(2)} EUR/zi</p>
+<p style="font-size:8px;font-weight:900;color:#c084fc;margin-top:2px;">${pretPeZi.toFixed(2)} LEI/zi</p>
     </div>
     <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:12px;text-align:center;">
         <p style="font-size:6px;font-weight:900;color:#6b7280;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;">${meniuriActive.length} meniuri · ${nrPers} pers.</p>
