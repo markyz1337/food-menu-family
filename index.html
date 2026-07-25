@@ -841,38 +841,38 @@
         <div id="backup-tables-list">
             <div class="backup-table-row">
                 <p class="backup-table-name">📙 Catalog produse</p>
-                <p class="backup-table-sub">tabela: foodmenueuro_catalog</p>
-                <button class="backup-btn backup-btn-export" onclick="exportTableCSV('foodmenueuro_catalog')">⬇ Descarcă CSV</button>
+                <p class="backup-table-sub">tabela: foodmenueuro_inga_catalog</p>
+                <button class="backup-btn backup-btn-export" onclick="exportTableCSV('foodmenueuro_inga_catalog')">⬇ Descarcă CSV</button>
             </div>
             <div class="backup-table-row">
                 <p class="backup-table-name">🍽️ Rețete / Meniuri</p>
-                <p class="backup-table-sub">tabela: foodmenueuro_retete</p>
-                <button class="backup-btn backup-btn-export" onclick="exportTableCSV('foodmenueuro_retete')">⬇ Descarcă CSV</button>
+                <p class="backup-table-sub">tabela: foodmenueuro_inga_retete</p>
+                <button class="backup-btn backup-btn-export" onclick="exportTableCSV('foodmenueuro_inga_retete')">⬇ Descarcă CSV</button>
             </div>
             <div class="backup-table-row">
                 <p class="backup-table-name">❄️ Frigider</p>
-                <p class="backup-table-sub">tabela: foodmenueuro_frigider</p>
-                <button class="backup-btn backup-btn-export" onclick="exportTableCSV('foodmenueuro_frigider')">⬇ Descarcă CSV</button>
+                <p class="backup-table-sub">tabela: foodmenueuro_inga_frigider</p>
+                <button class="backup-btn backup-btn-export" onclick="exportTableCSV('foodmenueuro_inga_frigider')">⬇ Descarcă CSV</button>
             </div>
             <div class="backup-table-row">
                 <p class="backup-table-name">⚙️ Setări</p>
-                <p class="backup-table-sub">tabela: foodmenueuro_setari</p>
-                <button class="backup-btn backup-btn-export" onclick="exportTableCSV('foodmenueuro_setari')">⬇ Descarcă CSV</button>
+                <p class="backup-table-sub">tabela: foodmenueuro_inga_setari</p>
+                <button class="backup-btn backup-btn-export" onclick="exportTableCSV('foodmenueuro_inga_setari')">⬇ Descarcă CSV</button>
             </div>
             <div class="backup-table-row">
                 <p class="backup-table-name">🛒 Confirmări coș</p>
-                <p class="backup-table-sub">tabela: foodmenueuro_shopping_confirmari</p>
-                <button class="backup-btn backup-btn-export" onclick="exportTableCSV('foodmenueuro_shopping_confirmari')">⬇ Descarcă CSV</button>
+                <p class="backup-table-sub">tabela: foodmenueuro_inga_shopping_confirmari</p>
+                <button class="backup-btn backup-btn-export" onclick="exportTableCSV('foodmenueuro_inga_shopping_confirmari')">⬇ Descarcă CSV</button>
             </div>
             <div class="backup-table-row">
                 <p class="backup-table-name">📌 Meniuri salvate</p>
-                <p class="backup-table-sub">tabela: foodmenueuro_selectii_salvate</p>
-                <button class="backup-btn backup-btn-export" onclick="exportTableCSV('foodmenueuro_selectii_salvate')">⬇ Descarcă CSV</button>
+                <p class="backup-table-sub">tabela: foodmenueuro_inga_selectii_salvate</p>
+                <button class="backup-btn backup-btn-export" onclick="exportTableCSV('foodmenueuro_inga_selectii_salvate')">⬇ Descarcă CSV</button>
             </div>
             <div class="backup-table-row">
                 <p class="backup-table-name">🛒 Cumpărături lunare</p>
-                <p class="backup-table-sub">tabela: foodmenueuro_recurente</p>
-                <button class="backup-btn backup-btn-export" onclick="exportTableCSV('foodmenueuro_recurente')">⬇ Descarcă CSV</button>
+                <p class="backup-table-sub">tabela: foodmenueuro_inga_recurente</p>
+                <button class="backup-btn backup-btn-export" onclick="exportTableCSV('foodmenueuro_inga_recurente')">⬇ Descarcă CSV</button>
             </div>
             <div class="backup-table-row" style="background:rgba(192,132,252,0.04);border-color:rgba(192,132,252,0.15);">
                 <button class="backup-btn backup-btn-export" onclick="exportAllTablesCSV()">⬇ Descarcă TOATE (7 fișiere)</button>
@@ -1256,7 +1256,7 @@ onblur="if(!this.value||this.value==='0')this.value='1'; db_saveFridgeNumPersoan
 <div class="hud-status" onclick="openShoppingList()" style="cursor: pointer; padding: 10px 18px;">
     <div class="flex items-center gap-4">
         <div class="flex flex-col items-start leading-[1.1]">
-            <span id="hud-EUR" class="text-base font-black tracking-tighter text-white">0.00 EUR</span>
+            <span id="hud-EUR" class="text-base font-black tracking-tighter text-white">0.00 LEI</span>
             <span id="hud-per-day" class="text-[10px] font-black text-emerald-400 uppercase tracking-tighter">0.00 EUR/zi</span>
         </div>
         <div class="w-[1px] h-7 bg-white/10"></div>
@@ -1422,7 +1422,7 @@ let supabaseKeepAliveInterval = null;
 async function supabaseHeartbeat() {
     if (!USE_SUPABASE || document.hidden) return;
     try {
-        await supabaseClient.from('foodmenueuro_setari').select('id').limit(1);
+        await supabaseClient.from('foodmenueuro_inga_setari').select('id').limit(1);
     } catch (e) {
         console.warn('Heartbeat Supabase eșuat:', e);
     }
@@ -1493,7 +1493,7 @@ let shoppingConfirmari = {};
 async function db_loadConfirmari() {
     if (!USE_SUPABASE) return;
     try {
-        const { data, error } = await supabaseClient.from('foodmenueuro_shopping_confirmari').select('*');
+        const { data, error } = await supabaseClient.from('foodmenueuro_inga_shopping_confirmari').select('*');
         if (error) { console.error('Eroare confirmari:', error); return; }
         shoppingConfirmari = {};
         (data || []).forEach(r => {
@@ -1507,7 +1507,7 @@ async function db_loadConfirmari() {
 async function db_upsertConfirmare(prodId, confirmat) {
     if (!USE_SUPABASE) return;
     try {
-        await supabaseClient.from('foodmenueuro_shopping_confirmari').upsert({
+        await supabaseClient.from('foodmenueuro_inga_shopping_confirmari').upsert({
             prod_id: prodId,
             confirmat: confirmat,
             updated_at: new Date().toISOString()
@@ -1726,15 +1726,15 @@ function buildShoppingListContent() {
                             ${countMeniuri > 1 ? `<span class="w-5 h-5 flex-shrink-0 flex items-center justify-center bg-emerald-500/20 text-emerald-400 rounded-full text-[10px] font-black border border-emerald-500/30">${countMeniuri}</span>` : ''}
                         </div>
                         <div class="flex items-center gap-2 ml-1 flex-wrap">
-                            <p class="text-[10px] font-bold text-gray-500 uppercase tracking-tight">${pReal.pretEur.toFixed(2)} EUR / ${pReal.unit}</p>
+                            <p class="text-[10px] font-bold text-gray-500 uppercase tracking-tight">${pReal.pretEur.toFixed(2)} LEI / ${pReal.unit}</p>
                             ${fridgeBadgeHTML}
                         </div>
 
                     </div>
                     <div class="text-right flex-shrink-0">
-                        <p class="text-base font-black ${isConfirmed ? 'text-emerald-400' : 'text-white'} leading-none">${pretTotalEUR.toFixed(2)} EUR</p>
+                        <p class="text-base font-black ${isConfirmed ? 'text-emerald-400' : 'text-white'} leading-none">${pretTotalEUR.toFixed(2)} LEI</p>
                         ${fridgeDeductActive && item.qtyInFridge > 0 ? `
-                        <p class="text-[9px] font-bold text-gray-600 line-through leading-none mt-0.5">${(pReal.pretEur * item.totalQtyNecesara).toFixed(2)} EUR</p>` : ''}
+                        <p class="text-[9px] font-bold text-gray-600 line-through leading-none mt-0.5">${(pReal.pretEur * item.totalQtyNecesara).toFixed(2)} LEI</p>` : ''}
                     </div>
                 </div>
                  <button class="confirm-cart-btn ${btnClass}"
@@ -1773,10 +1773,10 @@ function buildShoppingListContent() {
                             </div>
 
                         </div>
-                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-tight ml-1">${item.pretEur.toFixed(2)} EUR / buc</p>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-tight ml-1">${item.pretEur.toFixed(2)} LEI / buc</p>
                     </div>
                     <div class="text-right flex-shrink-0">
-                        <p class="text-base font-black ${isConfirmed ? 'text-emerald-400' : 'text-white'} leading-none">${totalItem.toFixed(2)} EUR</p>
+                        <p class="text-base font-black ${isConfirmed ? 'text-emerald-400' : 'text-white'} leading-none">${totalItem.toFixed(2)} LEI</p>
                     </div>
                 </div>
                 <button class="confirm-cart-btn ${btnClass}"
@@ -1846,8 +1846,8 @@ function buildShoppingListContent() {
                             </div>
                         </div>
                         <div class="text-right flex-shrink-0">
-                            <p class="text-sm font-black text-emerald-400 leading-none">0.00 EUR</p>
-                            <p class="text-[9px] font-bold text-gray-600 line-through leading-none mt-0.5">${(pReal.pretEur * item.totalQtyNecesara).toFixed(2)} EUR</p>
+                            <p class="text-sm font-black text-emerald-400 leading-none">0.00 LEI</p>
+                            <p class="text-[9px] font-bold text-gray-600 line-through leading-none mt-0.5">${(pReal.pretEur * item.totalQtyNecesara).toFixed(2)} LEI</p>
                         </div>
                     </div>
                 </div>`;
@@ -2108,7 +2108,7 @@ function showProductMenus(prodId) {
     const listEl = document.getElementById('modal-menus-list');
 
     nameEl.textContent = prod.nume;
-    priceEl.textContent = `${prod.pretEur.toFixed(2)} EUR / ${prod.unit}`;
+    priceEl.textContent = `${prod.pretEur.toFixed(2)} LEI / ${prod.unit}`;
 
     // Găsim toate meniurile care conțin produsul
     const meniuriCuProdus = retete.filter(r =>
@@ -2147,7 +2147,7 @@ function showProductMenus(prodId) {
                     </div>
                     <div class="text-right flex-shrink-0 ml-3">
                         <p class="text-sm font-black ${isSelected ? 'text-purple-300' : 'text-gray-400'}">${su.val} <span class="text-[9px] font-bold text-gray-500 uppercase">${su.unit}</span></p>
-                        <p class="text-[9px] font-bold text-gray-600">${costIng.toFixed(2)} EUR</p>
+                        <p class="text-[9px] font-bold text-gray-600">${costIng.toFixed(2)} LEI</p>
                     </div>
                 </div>`;
         });
@@ -2168,7 +2168,7 @@ function showProductMenus(prodId) {
                         <p class="text-[8px] font-black text-purple-400 uppercase tracking-widest">Total în plan activ</p>
                         <p class="text-xs font-black text-white">${suTotal.val} ${suTotal.unit}</p>
                     </div>
-                    <p class="text-base font-black text-purple-300">${totalCost.toFixed(2)} <span class="text-[9px] font-bold text-purple-500">EUR</span></p>
+                    <p class="text-base font-black text-purple-300">${totalCost.toFixed(2)} <span class="text-[9px] font-bold text-purple-500">LEI</span></p>
                 </div>`;
         }
     }
@@ -2204,7 +2204,7 @@ function closeProductMenusModal() {
 
 async function db_loadFrigider() {
     if (!USE_SUPABASE) return;
-    const { data, error } = await supabaseClient.from('foodmenueuro_frigider').select('*');
+    const { data, error } = await supabaseClient.from('foodmenueuro_inga_frigider').select('*');
     if (error) { console.error('Eroare frigider:', error); return; }
     frigider = (data || []).map(r => ({
         id: r.id,
@@ -2216,7 +2216,7 @@ async function db_loadFrigider() {
 
 async function db_upsertFrigiderItem(item) {
     if (!USE_SUPABASE) return;
-    await supabaseClient.from('foodmenueuro_frigider').upsert({
+    await supabaseClient.from('foodmenueuro_inga_frigider').upsert({
         id: item.id,
         qty: item.qty,
         addedAt: item.addedAt,
@@ -2226,12 +2226,12 @@ async function db_upsertFrigiderItem(item) {
 
 async function db_deleteFrigiderItem(id) {
     if (!USE_SUPABASE) return;
-    await supabaseClient.from('foodmenueuro_frigider').delete().eq('id', id);
+    await supabaseClient.from('foodmenueuro_inga_frigider').delete().eq('id', id);
 }
 
 async function db_loadSelectiiSalvate() {
     if (!USE_SUPABASE) return;
-    const { data, error } = await supabaseClient.from('foodmenueuro_selectii_salvate').select('*');
+    const { data, error } = await supabaseClient.from('foodmenueuro_inga_selectii_salvate').select('*');
     if (error) { console.error('Eroare selectii salvate:', error); return; }
     selectiiSalvate = (data || []).map(r => ({
         id: r.id,
@@ -2244,7 +2244,7 @@ async function db_loadSelectiiSalvate() {
 
 async function db_upsertSelectieSalvata(sel) {
     if (!USE_SUPABASE) return;
-    await supabaseClient.from('foodmenueuro_selectii_salvate').upsert({
+    await supabaseClient.from('foodmenueuro_inga_selectii_salvate').upsert({
         id: sel.id,
         nume: sel.nume,
         retete_ids: sel.reteteSnapshot,
@@ -2256,7 +2256,7 @@ async function db_upsertSelectieSalvata(sel) {
 
 async function db_deleteSelectieSalvata(id) {
     if (!USE_SUPABASE) return;
-    await supabaseClient.from('foodmenueuro_selectii_salvate').delete().eq('id', id);
+    await supabaseClient.from('foodmenueuro_inga_selectii_salvate').delete().eq('id', id);
 }
 
 
@@ -2294,7 +2294,7 @@ function renderFridgePickerOptions() {
                         </div>
                         <div class="min-w-0">
                             <span class="block font-bold text-white text-sm truncate">${prod.nume}</span>
-                            <span class="text-[10px] font-bold text-gray-500 uppercase">${prod.pretEur.toFixed(2)} EUR / ${prod.unit}</span>
+                            <span class="text-[10px] font-bold text-gray-500 uppercase">${prod.pretEur.toFixed(2)} LEI / ${prod.unit}</span>
                         </div>
                     </div>
                     ${isSelected ? `
@@ -2626,7 +2626,7 @@ ${(su => su.val)(smartUnit(ing.available, ing.unit))} ${(su => su.unit)(smartUni
                             <div class="efficiency-bar"><div class="efficiency-bar-fill" style="width:${barW}%"></div></div>
                         </div>
                         <div class="text-right flex-shrink-0">
-                            <p class="text-sm font-black text-white leading-none">${res.costPer1Portie.toFixed(2)} EUR</p>
+                            <p class="text-sm font-black text-white leading-none">${res.costPer1Portie.toFixed(2)} LEI</p>
                             <p class="text-[9px] font-bold text-gray-500">/ porție</p>
                         </div>
                     </div>
@@ -2707,10 +2707,10 @@ ${(su => su.val)(smartUnit(ing.available, ing.unit))} ${(su => su.unit)(smartUni
                             <div class="efficiency-bar mt-2"><div class="efficiency-bar-fill" style="width:${barW}%; opacity:0.5;"></div></div>
                         </div>
                         <div class="text-right flex-shrink-0">
-                            <p class="text-sm font-black text-white/60 leading-none">${res.costPer1Portie.toFixed(2)} EUR</p>
+                            <p class="text-sm font-black text-white/60 leading-none">${res.costPer1Portie.toFixed(2)} LEI</p>
                             <p class="text-[9px] font-bold text-gray-600">/ porție</p>
                             ${res.totalCostLipsa > 0 ? `
-                            <p class="text-sm font-black text-red-400 leading-none mt-1">${res.totalCostLipsa.toFixed(2)} EUR</p>
+                            <p class="text-sm font-black text-red-400 leading-none mt-1">${res.totalCostLipsa.toFixed(2)} LEI</p>
                             <p class="text-[9px] font-bold text-red-500/60">de cumpărat</p>` : ''}
                         </div>
                     </div>
@@ -2807,29 +2807,29 @@ async function toggleSelectAll() {
 
 async function db_saveNumPersoane(val) {
     if (!USE_SUPABASE) return;
-    await supabaseClient.from('foodmenueuro_setari').upsert({ id: 'num_persoane', valoare: val.toString() });
+    await supabaseClient.from('foodmenueuro_inga_setari').upsert({ id: 'num_persoane', valoare: val.toString() });
 }
 
 async function db_loadNumPersoane() {
     if (!USE_SUPABASE) return;
-    const { data } = await supabaseClient.from('foodmenueuro_setari').select('valoare').eq('id', 'num_persoane').single();
+    const { data } = await supabaseClient.from('foodmenueuro_inga_setari').select('valoare').eq('id', 'num_persoane').single();
     if (data) document.getElementById('num-persoane-input').value = data.valoare;
 }
 
 async function db_saveFridgeNumPersoane(val) {
     if (!USE_SUPABASE) return;
-    await supabaseClient.from('foodmenueuro_setari').upsert({ id: 'fridge_num_persoane', valoare: val.toString() });
+    await supabaseClient.from('foodmenueuro_inga_setari').upsert({ id: 'fridge_num_persoane', valoare: val.toString() });
 }
 
 async function db_loadFridgeNumPersoane() {
     if (!USE_SUPABASE) return;
-    const { data } = await supabaseClient.from('foodmenueuro_setari').select('valoare').eq('id', 'fridge_num_persoane').single();
+    const { data } = await supabaseClient.from('foodmenueuro_inga_setari').select('valoare').eq('id', 'fridge_num_persoane').single();
     if (data) document.getElementById('fridge-num-persoane-input').value = data.valoare;
 }
 
 async function db_loadCatalog() {
     if (!USE_SUPABASE) return;
-    const { data, error } = await supabaseClient.from('foodmenueuro_catalog').select('*');
+    const { data, error } = await supabaseClient.from('foodmenueuro_inga_catalog').select('*');
     if (error) { console.error('Eroare catalog:', error); return; }
     catalog = data.map(r => ({ id: r.id, nume: r.nume, pretEur: parseFloat(r.pretEur), unit: r.unit, addedAt: r.addedAt || r.added_at || null, modifiedAt: r.modifiedAt || r.modified_at || null, searchQuery: r.searchQuery || r.search_query || '' }));
 }
@@ -2838,25 +2838,25 @@ async function db_loadCatalog() {
 
 async function db_upsertCatalogItem(prod) {
     if (!USE_SUPABASE) return;
-    await supabaseClient.from('foodmenueuro_catalog').upsert({ id: prod.id, nume: prod.nume, pretEur: prod.pretEur, unit: prod.unit, addedAt: prod.addedAt || Date.now(), modifiedAt: Date.now(), searchQuery: prod.searchQuery || null });
+    await supabaseClient.from('foodmenueuro_inga_catalog').upsert({ id: prod.id, nume: prod.nume, pretEur: prod.pretEur, unit: prod.unit, addedAt: prod.addedAt || Date.now(), modifiedAt: Date.now(), searchQuery: prod.searchQuery || null });
 }
 
 
 async function db_loadRetete() {
     if (!USE_SUPABASE) return;
-    const { data, error } = await supabaseClient.from('foodmenueuro_retete').select('*');
+    const { data, error } = await supabaseClient.from('foodmenueuro_inga_retete').select('*');
     if (error) { console.error('Eroare retete:', error); return; }
     retete = data.map(r => ({ id: r.id, nume: r.nume, ore: r.ore, portii: r.portii, tags: r.tags || '', selectat: r.selectat, ingrediente: r.ingrediente || [] }));
 }
 
 async function db_deleteCatalogItem(id) {
     if (!USE_SUPABASE) return;
-    await supabaseClient.from('foodmenueuro_catalog').delete().eq('id', id);
+    await supabaseClient.from('foodmenueuro_inga_catalog').delete().eq('id', id);
 }
 
 async function db_loadRecurente() {
     if (!USE_SUPABASE) return;
-    const { data, error } = await supabaseClient.from('foodmenueuro_recurente').select('*');
+    const { data, error } = await supabaseClient.from('foodmenueuro_inga_recurente').select('*');
     if (error) { console.error('Eroare recurente:', error); return; }
     recurente = (data || []).map(r => ({
         id: r.id,
@@ -2873,7 +2873,7 @@ async function db_loadRecurente() {
 
 async function db_upsertRecurent(item) {
     if (!USE_SUPABASE) return;
-    await supabaseClient.from('foodmenueuro_recurente').upsert({
+    await supabaseClient.from('foodmenueuro_inga_recurente').upsert({
         id: item.id,
         nume: item.nume,
         pret_eur: item.pretEur,
@@ -2889,7 +2889,7 @@ async function db_upsertRecurent(item) {
 
 async function db_deleteRecurent(id) {
     if (!USE_SUPABASE) return;
-    await supabaseClient.from('foodmenueuro_recurente').delete().eq('id', id);
+    await supabaseClient.from('foodmenueuro_inga_recurente').delete().eq('id', id);
 }
 
 
@@ -2897,17 +2897,17 @@ async function db_upsertReteta(reteta) {
     if (!USE_SUPABASE) return;
     const payload = { nume: reteta.nume, ore: reteta.ore, portii: reteta.portii, tags: reteta.tags || '', selectat: reteta.selectat, ingrediente: reteta.ingrediente };
     if (typeof reteta.id === 'number' && reteta.id > 1000000000) {
-        const { data, error } = await supabaseClient.from('foodmenueuro_retete').insert(payload).select().single();
+        const { data, error } = await supabaseClient.from('foodmenueuro_inga_retete').insert(payload).select().single();
         if (error) { console.error('Eroare inserare rețetă:', error); return; }
         reteta.id = data.id;
     } else {
-        await supabaseClient.from('foodmenueuro_retete').update(payload).eq('id', reteta.id);
+        await supabaseClient.from('foodmenueuro_inga_retete').update(payload).eq('id', reteta.id);
     }
 }
 
 async function db_deleteReteta(id) {
     if (!USE_SUPABASE) return;
-    await supabaseClient.from('foodmenueuro_retete').delete().eq('id', id);
+    await supabaseClient.from('foodmenueuro_inga_retete').delete().eq('id', id);
 }
 
 // ============================================================
@@ -3226,7 +3226,7 @@ function renderSavedMenusList() {
                             <p class="saved-menu-detail-name truncate">${item.nume}</p>
                             <p class="saved-menu-detail-meta">${item.orePerPersoana}h · ${item.portii} mese</p>
                         </div>
-                        <p class="saved-menu-detail-price">${item.costUnitar.toFixed(2)} EUR</p>
+                        <p class="saved-menu-detail-price">${item.costUnitar.toFixed(2)} LEI</p>
                     </div>`).join('');
 
             }
@@ -3246,7 +3246,7 @@ function renderSavedMenusList() {
                 <div class="saved-menu-stats">
                     <div class="saved-menu-stat">
                         <p class="saved-menu-stat-label">Total</p>
-                        <p class="saved-menu-stat-val">${stats.totalEUR.toFixed(2)} EUR</p>
+                        <p class="saved-menu-stat-val">${stats.totalEUR.toFixed(2)} LEI</p>
                     </div>
                     <div class="saved-menu-stat">
                         <p class="saved-menu-stat-label">Zile</p>
@@ -3491,7 +3491,7 @@ async function exportTableCSV(tableName) {
 
 
 async function exportAllTablesCSV() {
-    const tables = ['foodmenueuro_catalog', 'foodmenueuro_retete', 'foodmenueuro_frigider', 'foodmenueuro_setari', 'foodmenueuro_shopping_confirmari', 'foodmenueuro_selectii_salvate', 'foodmenueuro_recurente'];
+    const tables = ['foodmenueuro_inga_catalog', 'foodmenueuro_inga_retete', 'foodmenueuro_inga_frigider', 'foodmenueuro_inga_setari', 'foodmenueuro_inga_shopping_confirmari', 'foodmenueuro_inga_selectii_salvate', 'foodmenueuro_inga_recurente'];
 
     for (const t of tables) {
         await exportTableCSV(t);
@@ -3638,7 +3638,7 @@ function render() {
                     <div class="bg-purple-500/10 py-1.5 rounded-xl border border-purple-500/20">
                         <p class="text-[7px] font-black text-emerald-400 uppercase tracking-widest">Preț Total</p>
                         <p class="text-lg font-black text-white leading-none">${reteta.costEURCalculat.toFixed(2)}</p>
-                        <p class="text-[9px] font-black text-purple-400 leading-none">EUR</p>
+                        <p class="text-[9px] font-black text-purple-400 leading-none">LEI</p>
                     </div>
 
                     <div class="flex flex-col items-center">
@@ -3815,7 +3815,7 @@ function renderRecurente() {
                             </span>
                         </div>
 
-                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-tight mt-0.5">${fmtEUR(item.pretEur)} EUR / buc</p>`}
+                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-tight mt-0.5">${fmtEUR(item.pretEur)} LEI / buc</p>`}
                     </div>
                 </div>
 
@@ -3824,7 +3824,7 @@ function renderRecurente() {
                 <div class="flex items-stretch gap-2 ${isUnlocked ? 'mb-3' : ''}">
                     <div class="bg-emerald-500/10 px-2 py-2 rounded-xl flex flex-col items-center justify-center border border-emerald-500/20 flex-1">
                         <span class="font-black text-white">${fmtEUR(total)}</span>
-                        <span class="text-[8px] font-black text-emerald-400 uppercase">total eur</span>
+                        <span class="text-[8px] font-black text-emerald-400 uppercase">total LEI</span>
                     </div>
                     <div class="bg-amber-500/10 px-2 py-2 rounded-xl flex flex-col items-center justify-center border border-amber-500/20 flex-1">
                         <input id="recurent-qty-${item.id}"
@@ -4174,7 +4174,7 @@ async function resetConfirmari() {
     shoppingConfirmari = {};
     if (!USE_SUPABASE) return;
     try {
-        await supabaseClient.from('foodmenueuro_shopping_confirmari').delete().neq('prod_id', '');
+        await supabaseClient.from('foodmenueuro_inga_shopping_confirmari').delete().neq('prod_id', '');
     } catch (e) {
         console.error('Eroare reset confirmari:', e);
     }
@@ -4258,7 +4258,7 @@ function renderPickerOptions() {
                         <span class="text-[10px] font-bold text-gray-500 uppercase">${prod.unit}</span>
                     </div>
                     <div class="text-right">
-                        <span class="text-sm font-black text-purple-400">${prod.pretEur.toFixed(2)} EUR</span>
+                        <span class="text-sm font-black text-purple-400">${prod.pretEur.toFixed(2)} LEI</span>
                     </div>
                 </div>`;
         });
@@ -4352,7 +4352,7 @@ function generateMenuPDF() {
                 <div style="background:rgba(192,132,252,0.1);border:1px solid rgba(192,132,252,0.2);border-radius:12px;padding:6px 4px;">
                     <p style="font-size:7px;font-weight:900;color:#10b981;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;">Preț Total</p>
                     <p style="font-size:18px;font-weight:900;color:#ffffff;margin:0;line-height:1;">${r._costTotal.toFixed(2)}</p>
-                    <p style="font-size:8px;font-weight:900;color:#c084fc;margin:0;">EUR</p>
+                    <p style="font-size:8px;font-weight:900;color:#c084fc;margin:0;">LEI</p>
                 </div>
                 <div>
                     <p style="font-size:7px;font-weight:900;color:#6b7280;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Mese</p>
@@ -4507,7 +4507,7 @@ function generateFridgePDF() {
                     <p style="font-size:7px;font-weight:900;color:#10b981;text-transform:uppercase;letter-spacing:1px;margin:0;">Preț</p>
                     <div style="display:flex;align-items:baseline;gap:3px;">
                         <p style="font-size:16px;font-weight:900;color:#ffffff;margin:0;line-height:1;">${res.costPer1Portie.toFixed(2)}</p>
-                        <p style="font-size:8px;font-weight:900;color:#10b981;margin:0;">EUR</p>
+                        <p style="font-size:8px;font-weight:900;color:#10b981;margin:0;">LEI</p>
                     </div>
                 </div>
                 <div style="height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
@@ -4552,7 +4552,7 @@ function generateFridgePDF() {
             <div style="display:flex;gap:6px;margin-bottom:8px;">
                 <span style="font-size:8px;font-weight:900;color:#9ca3af;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:2px 8px;">${areInFrigider}/${res.nrIngrediente} în frigider</span>
                 <span style="font-size:8px;font-weight:900;color:#ef4444;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:6px;padding:2px 8px;">lipsesc ${lipsescTotal}</span>
-                ${res.totalCostLipsa > 0 ? `<span style="font-size:8px;font-weight:900;color:#ef4444;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:6px;padding:2px 8px;">${res.totalCostLipsa.toFixed(2)} EUR de cumpărat</span>` : ''}
+                ${res.totalCostLipsa > 0 ? `<span style="font-size:8px;font-weight:900;color:#ef4444;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:6px;padding:2px 8px;">${res.totalCostLipsa.toFixed(2)} LEI de cumpărat</span>` : ''}
             </div>
             <div style="background:rgba(239,68,68,0.04);border:1px solid rgba(239,68,68,0.1);border-radius:12px;padding:10px 12px;">
                 <p style="font-size:7px;font-weight:900;color:#ef4444;text-transform:uppercase;letter-spacing:2px;margin:0 0 6px 0;">Ingrediente necesare (1 porție)</p>
