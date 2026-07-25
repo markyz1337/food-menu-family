@@ -2920,7 +2920,7 @@ function toggleLock() {
     hiddenInput.value = ""; hiddenInput.focus();
     hiddenInput.oninput = function() {
         if (this.value.length === 4) {
-            if (this.value === "4579") { applyLockState(true); this.blur(); }
+            if (this.value === "1209") { applyLockState(true); this.blur(); }
             else { alert("Cod incorect!"); this.value = ""; }
         }
     };
